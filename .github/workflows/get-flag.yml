@@ -1,0 +1,38 @@
+name: Read Flag from Blob
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  get-flag:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        client-id: 6a20e416-1657-4722-a35f-aa5c69333784
+        tenant-id: fdd066e1-ee37-49bc-b08f-d0e152119b04
+        subscription-id: e34f9f21-6fd7-4631-9a50-96f8b5abb45c
+
+    - name: List blobs
+      run: |
+        az storage blob list \
+          --account-name iamazurelab267d55bf3 \
+          --container-name flag \
+          --auth-mode login \
+          --output table
+
+    - name: Download and print flag
+      run: |
+        az storage blob download \
+          --account-name iamazurelab267d55bf3 \
+          --container-name flag \
+          --name flag.txt \
+          --file flag.txt \
+          --auth-mode login
+        cat flag.txt
