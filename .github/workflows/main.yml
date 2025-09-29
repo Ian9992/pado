@@ -12,9 +12,9 @@ jobs:
       - name: Azure login
         uses: azure/login@v1
         with:
-          client-id: iam-azure-lab-3-identity
-          tenant-id: azure.training.hacktricks.xyz
-          subscription-id: /subscriptions/1e82883a-e951-4964-be3a-972a429fc011/resourceGroups/iam-azure-labs/providers/Microsoft.ManagedIdentity/userAssignedIdentities/iam-azure-lab-3-identity
+          client-id: 96fe291a-f935-4715-8b9b-54fa9780fd33
+          tenant-id: fdd066e1-ee37-49bc-b08f-d0e152119b04
+          subscription-id: 1e82883a-e951-4964-be3a-972a429fc011
           enable-AzPSSession: true
 
       - name: Download flag
